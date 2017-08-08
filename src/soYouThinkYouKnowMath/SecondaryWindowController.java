@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package so.you.think.you.know.math;
+package soYouThinkYouKnowMath;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
@@ -15,13 +18,30 @@ import javafx.fxml.Initializable;
  * @author cody
  */
 public class SecondaryWindowController implements Initializable {
+    //FXML hooks
+    @FXML
+    private GridPane MainGridPane;
 
+    @FXML
+    private ImageView ImageView;
+
+    @FXML
+    private GridPane scoresGridPane;
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
+    }
+
+    void addPlayerView(String playerName,String playerInstitution,String playerScore){
+        
+        scoresGridPane.addColumn(0);
+    }
+    
+    
     
 }

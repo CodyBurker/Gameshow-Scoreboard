@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package so.you.think.you.know.math;
+package soYouThinkYouKnowMath;
 
 import java.util.List;
 import javafx.scene.paint.Color;

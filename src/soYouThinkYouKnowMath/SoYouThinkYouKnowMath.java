@@ -1,6 +1,6 @@
 // Cody Burker
 // August 2017
-package so.you.think.you.know.math;
+package soYouThinkYouKnowMath;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
