@@ -57,9 +57,12 @@ public class PrimaryWindowController implements Initializable {
         stage.setOnCloseRequest((WindowEvent we) -> {
             System.exit(0);
         });
-
-        
-        
+        game = new Game();
+        game.players.add(new Player("Hello","Franklin"));
+        secondaryWindow.loadGame(game);
+        secondaryWindow.update();
+        game.players.add(new Player("Cody","Franklin"));
+        secondaryWindow.update();
         
     }
     

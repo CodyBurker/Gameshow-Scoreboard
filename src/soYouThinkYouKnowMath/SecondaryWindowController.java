@@ -54,7 +54,10 @@ public class SecondaryWindowController implements Initializable {
     public void loadGame(Game game){
         this.game = game;
     }
-
+    public void update(){
+        System.out.println(game.getNumberOfPlayers());
+    }
+    
     
     
     
