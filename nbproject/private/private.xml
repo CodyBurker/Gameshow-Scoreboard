@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/soYouThinkYouKnowMath/tester.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>39</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/cody/NetBeansProjects/So%20You%20Think%20You%20Know%20Math/src/soYouThinkYouKnowMath/Player.java</file>
             <file>file:/Users/cody/NetBeansProjects/So%20You%20Think%20You%20Know%20Math/src/soYouThinkYouKnowMath/SecondaryWindowController.java</file>
-            <file>file:/Users/cody/NetBeansProjects/So%20You%20Think%20You%20Know%20Math/src/soYouThinkYouKnowMath/PrimaryWindow.fxml</file>
-            <file>file:/Users/cody/NetBeansProjects/So%20You%20Think%20You%20Know%20Math/src/soYouThinkYouKnowMath/Game.java</file>
             <file>file:/Users/cody/NetBeansProjects/So%20You%20Think%20You%20Know%20Math/src/soYouThinkYouKnowMath/PrimaryWindowController.java</file>
             <file>file:/Users/cody/NetBeansProjects/So%20You%20Think%20You%20Know%20Math/src/soYouThinkYouKnowMath/SoYouThinkYouKnowMath.java</file>
-            <file>file:/Users/cody/NetBeansProjects/So%20You%20Think%20You%20Know%20Math/src/soYouThinkYouKnowMath/Slide.java</file>
         </group>
     </open-files>
 </project-private>
