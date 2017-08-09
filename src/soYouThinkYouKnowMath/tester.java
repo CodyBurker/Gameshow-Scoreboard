@@ -12,5 +12,11 @@ package soYouThinkYouKnowMath;
 public class tester {
     public static void main(String[] args) {
         System.out.println("Testing custom classes Game, Player, and Slide.");
+        Game game = new Game();
+        game.slides.add(new Slide("/testPath2",1));
+        game.players.add(new Player("Cody","Franklin"));
+        System.out.println("Player Name: " + game.getPlayer(1).name);
+        System.out.println("Image Path: " + game.getSlide(1).getImagePath());
     }
+    
 }
