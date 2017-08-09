@@ -101,6 +101,18 @@ public class PrimaryWindowController implements Initializable {
     private ToggleButton p5Show;
     @FXML
     private ToggleButton p6Show;
+    @FXML
+    private Label p1Score;
+    @FXML
+    private Label p2Score;
+    @FXML
+    private Label p3Score;
+    @FXML
+    private Label p4Score;
+    @FXML
+    private Label p5Score;
+    @FXML
+    private Label p6Score;
     Game game;
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -129,36 +141,132 @@ public class PrimaryWindowController implements Initializable {
         selectionModel.select(1);
 
         game = new Game();
-        game.players.add(new Player("Player 1", "Franklin"));
-        secondaryWindow.loadGame(game);
-        secondaryWindow.update();
-        game.players.add(new Player("Cody", "Franklin"));
-        game.slides.add(new Slide("/imagePath", 1));
-        secondaryWindow.update();
 
     }
     @FXML
     private void p1UpClick(ActionEvent event){
+        game.getPlayer(1).score+= game.getSlide(game.currentSlide).getSlideValue();
+        update();
     }
     @FXML
     private void p2UpClick(ActionEvent event){
-        
+        game.getPlayer(2).score+= game.getSlide(game.currentSlide).getSlideValue();
+        update();
     }
     @FXML
     private void p3UpClick(ActionEvent event){
-        
+        game.getPlayer(3).score+= game.getSlide(game.currentSlide).getSlideValue();
+        update();
     }
     @FXML
     private void p4UpClick(ActionEvent event){
-        
+        game.getPlayer(4).score+= game.getSlide(game.currentSlide).getSlideValue();
+        update();
     }
     @FXML
     private void p5UpClick(ActionEvent event){
-        
+        game.getPlayer(5).score+= game.getSlide(game.currentSlide).getSlideValue();
+        update();
     }
     @FXML
     private void p6UpClick(ActionEvent event){
+        game.getPlayer(6).score+= game.getSlide(game.currentSlide).getSlideValue();
+        update();
+    }
+    @FXML
+    private void p1DownClick(ActionEvent event){
+        game.getPlayer(1).score--;
+        update();
+    }
+    @FXML
+    private void p2DownClick(ActionEvent event){
+        game.getPlayer(2).score--;
+        update();
         
     }
+    @FXML
+    private void p3DownClick(ActionEvent event){
+        game.getPlayer(3).score--;
+        update();
+        
+    }
+    @FXML
+    private void p4DownClick(ActionEvent event){
+        game.getPlayer(4).score--;
+        update();
+        
+    }
+    @FXML
+    private void p5DownClick(ActionEvent event){
+        game.getPlayer(5).score--;
+        update();
+        
+    }
+    @FXML
+    private void p6DownClick(ActionEvent event){
+        game.getPlayer(6).score--;
+        update();
+        
+    }
+    @FXML
+    private void p1HideClick(ActionEvent event){
+        
+    }
+    @FXML
+    private void p2HideClick(ActionEvent event){
+        
+    }
+    @FXML
+    private void p3HideClick(ActionEvent event){
+        
+    }
+
+    @FXML
+    private void p4HideClick(ActionEvent event){
+        
+    }
+    @FXML
+    private void p5HideClick(ActionEvent event){
+        
+    }
+    @FXML
+    private void p6HideClick(ActionEvent event){
+        
+    }
+    @FXML
+    private void p1NameDirty(ActionEvent event){
+        
+    }
+    @FXML
+    private void p2NameDirty(ActionEvent event){
+        
+    }
+    @FXML
+    private void p3NameDirty(ActionEvent event){
+        
+    }
+    @FXML
+    private void p4NameDirty(ActionEvent event){
+        
+    }
+    @FXML
+    private void p5NameDirty(ActionEvent event){
+        
+    }
+    @FXML
+    private void p6NameDirty(ActionEvent event){
+        
+    }
+    private void update(){
+        secondaryWindow.update(game);
+        p1Score.setText(Integer.toString(game.getPlayer(1).getScore()));
+        p2Score.setText(Integer.toString(game.getPlayer(2).getScore()));
+        p3Score.setText(Integer.toString(game.getPlayer(3).getScore()));
+        p4Score.setText(Integer.toString(game.getPlayer(4).getScore()));
+        p5Score.setText(Integer.toString(game.getPlayer(5).getScore()));
+        p6Score.setText(Integer.toString(game.getPlayer(6).getScore()));
+    }
+    
+
 
 }

@@ -67,85 +67,85 @@
                                                 <Label text="Player Control" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                    <children>
-                                                      <TextField promptText="Player 1 Name" />
-                                                      <TextField promptText="Institution" />
-                                                      <Button mnemonicParsing="false" text="-1" textFill="RED" />
-                                                      <Button mnemonicParsing="false" text="+1" textFill="#007c0e" />
-                                                      <ToggleButton mnemonicParsing="false" text="Hide" />
+                                                      <TextField fx:id="p1Name" onKeyTyped="#p1NameDirty" promptText="Player 1 Name" />
+                                                      <TextField fx:id="p1Institution" promptText="Institution" />
+                                                      <Button fx:id="p1Down" mnemonicParsing="false" onAction="#p1DownClick" text="-1" textFill="RED" />
+                                                      <Button fx:id="p1Up" mnemonicParsing="false" onAction="#p1UpClick" text="+1" textFill="#007c0e" />
+                                                      <ToggleButton fx:id="p1Show" mnemonicParsing="false" onAction="#p1HideClick" text="Hide" />
                                                    </children>
                                                 </HBox>
                                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                                    <children>
-                                                      <TextField promptText="Player 2 Name" />
-                                                      <TextField promptText="Insitution" />
-                                                      <Button mnemonicParsing="false" text="-1" textFill="RED" />
-                                                      <Button mnemonicParsing="false" text="+1" textFill="#007c0e" />
-                                                      <ToggleButton mnemonicParsing="false" text="Hide" />
+                                                      <TextField fx:id="p2Name" onKeyTyped="#p2NameDirty" promptText="Player 2 Name" />
+                                                      <TextField fx:id="p2Institution" promptText="Insitution" />
+                                                      <Button fx:id="p2Down" mnemonicParsing="false" onAction="#p2DownClick" text="-1" textFill="RED" />
+                                                      <Button fx:id="p2Up" mnemonicParsing="false" onAction="#p2UpClick" text="+1" textFill="#007c0e" />
+                                                      <ToggleButton fx:id="p2Show" mnemonicParsing="false" onAction="#p2HideClick" text="Hide" />
                                                    </children>
                                                 </HBox>
                                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                                                    <children>
-                                                      <TextField promptText="Player 3 Name" />
-                                                      <TextField promptText="Insitution" />
-                                                      <Button mnemonicParsing="false" text="-1" textFill="RED" />
-                                                      <Button mnemonicParsing="false" text="+1" textFill="#007c0e" />
-                                                      <ToggleButton mnemonicParsing="false" text="Hide" />
+                                                      <TextField fx:id="p3Name" onKeyTyped="#p3NameDirty" promptText="Player 3 Name" />
+                                                      <TextField fx:id="p3Institution" promptText="Insitution" />
+                                                      <Button fx:id="p3Down" mnemonicParsing="false" onAction="#p3DownClick" text="-1" textFill="RED" />
+                                                      <Button fx:id="p3Up" mnemonicParsing="false" onAction="#p3UpClick" text="+1" textFill="#007c0e" />
+                                                      <ToggleButton fx:id="p3Show" mnemonicParsing="false" onAction="#p3HideClick" text="Hide" />
                                                    </children>
                                                 </HBox>
                                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                                                    <children>
-                                                      <TextField promptText="Player 4 Name" />
-                                                      <TextField promptText="Insitution" />
-                                                      <Button mnemonicParsing="false" text="-1" textFill="RED" />
-                                                      <Button mnemonicParsing="false" text="+1" textFill="#007c0e" />
-                                                      <ToggleButton mnemonicParsing="false" text="Hide" />
+                                                      <TextField fx:id="p4Name" onKeyTyped="#p4NameDirty" promptText="Player 4 Name" />
+                                                      <TextField fx:id="p4Institution" promptText="Insitution" />
+                                                      <Button fx:id="p4Down" mnemonicParsing="false" onAction="#p4DownClick" text="-1" textFill="RED" />
+                                                      <Button fx:id="p4Up" mnemonicParsing="false" onAction="#p4UpClick" text="+1" textFill="#007c0e" />
+                                                      <ToggleButton fx:id="p4Show" mnemonicParsing="false" onAction="#p4HideClick" text="Hide" />
                                                    </children>
                                                 </HBox>
                                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
                                                    <children>
-                                                      <TextField promptText="Player 5 Name" />
-                                                      <TextField promptText="Insitution" />
-                                                      <Button mnemonicParsing="false" text="-1" textFill="RED" />
-                                                      <Button mnemonicParsing="false" text="+1" textFill="#007c0e" />
-                                                      <ToggleButton mnemonicParsing="false" text="Hide" />
+                                                      <TextField fx:id="p5Name" onKeyTyped="#p5NameDirty" promptText="Player 5 Name" />
+                                                      <TextField fx:id="p5Institution" promptText="Insitution" />
+                                                      <Button fx:id="p5Down" mnemonicParsing="false" onAction="#p5DownClick" text="-1" textFill="RED" />
+                                                      <Button fx:id="p5Up" mnemonicParsing="false" onAction="#p5UpClick" text="+1" textFill="#007c0e" />
+                                                      <ToggleButton fx:id="p5Show" mnemonicParsing="false" onAction="#p5HideClick" text="Hide" />
                                                    </children>
                                                 </HBox>
                                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">
                                                    <children>
-                                                      <TextField promptText="Player 6 Name" />
-                                                      <TextField promptText="Insitution" />
-                                                      <Button mnemonicParsing="false" text="-1" textFill="RED" />
-                                                      <Button mnemonicParsing="false" text="+1" textFill="#007c0e" />
-                                                      <ToggleButton mnemonicParsing="false" text="Hide" />
+                                                      <TextField fx:id="p6Name" onKeyTyped="#p6NameDirty" promptText="Player 6 Name" />
+                                                      <TextField fx:id="p6Institution" promptText="Insitution" />
+                                                      <Button fx:id="p6Down" mnemonicParsing="false" onAction="#p6DownClick" text="-1" textFill="RED" />
+                                                      <Button fx:id="p6Up" mnemonicParsing="false" onAction="#p6UpClick" text="+1" textFill="#007c0e" />
+                                                      <ToggleButton fx:id="p6Show" mnemonicParsing="false" onAction="#p6HideClick" text="Hide" />
                                                    </children>
                                                 </HBox>
                                                 <Label text="Score" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                                                <Label text="4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <Label fx:id="p1Score" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                                <Label fx:id="p2Score" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                                <Label fx:id="p3Score" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                                <Label fx:id="p4Score" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                                                <Label fx:id="p5Score" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                                                <Label fx:id="p6Score" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>

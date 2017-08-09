@@ -42,7 +42,6 @@ public class SecondaryWindowController implements Initializable {
     @FXML
     private Label p1Score;
     
-    private Game game;
     
     /**
      * Initializes the controller class.
@@ -52,24 +51,21 @@ public class SecondaryWindowController implements Initializable {
         
     }
     
-    public void loadGame(Game game){
-        this.game = game;
-    }
-    public void update(){ // Test of sharing game object between controllers
-        p1Name.setText(game.getPlayer(1).name);
-        printPlayers();
-        printSlides();
+    public void update(Game game){ // Test of sharing game object between controllers
+//        p1Name.setText(game.getPlayer(1).name);
+        printPlayers(game);
+        printSlides(game);
         System.out.println("-----------");
     
         
     }
-    public void printPlayers(){
+    public void printPlayers(Game game){
         System.out.println(game.getNumberOfPlayers() + " Players:");
         for (Player currentPlayer: game.getPlayerList()){
-            System.out.println("    " + currentPlayer.name);
+            System.out.println("    " + currentPlayer.name + " " + currentPlayer.score);
         }
     }
-    public void printSlides(){
+    public void printSlides(Game game){
         System.out.println(game.getNumberOfSlides() + " Slides:");
         for (Slide currentSlide: game.slides){
             System.out.println("  " + currentSlide.getImagePath());

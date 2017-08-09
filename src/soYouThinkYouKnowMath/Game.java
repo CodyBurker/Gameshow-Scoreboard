@@ -25,6 +25,13 @@ public class Game {
         this.currentSlide = 1;
         slides = new ArrayList<>();
         players = new ArrayList<>();
+        players.add(new Player("Player 1","Institution 1",0));
+        players.add(new Player("Player 2","Institution 1",0));
+        players.add(new Player("Player 3","Institution 1",0));
+        players.add(new Player("Player 4","Institution 1",0));
+        players.add(new Player("Player 5","Institution 1",0));
+        players.add(new Player("Player 6","Institution 1",0));
+        slides.add(new Slide("",1,1));
     }
     void addSlide(Slide newSlide){ // To add a new slide object
         slides.add(newSlide);
