@@ -6,6 +6,7 @@
 package soYouThinkYouKnowMath;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
@@ -55,13 +56,29 @@ public class SecondaryWindowController implements Initializable {
         this.game = game;
     }
     public void update(){ // Test of sharing game object between controllers
-        System.out.println("Players: " + game.getNumberOfPlayers());
         p1Name.setText(game.getPlayer(1).name);
-        for (Player currentPlayer : game.getPlayerList()){
-            System.out.println("   " + currentPlayer.name);
-        }
+        printPlayers();
+        printSlides();
+        System.out.println("-----------");
+    
         
     }
+    public void printPlayers(){
+        System.out.println(game.getNumberOfPlayers() + " Players:");
+        for (Player currentPlayer: game.getPlayerList()){
+            System.out.println("    " + currentPlayer.name);
+        }
+    }
+    public void printSlides(){
+        System.out.println(game.getNumberOfSlides() + " Slides:");
+        for (Slide currentSlide: game.slides){
+            System.out.println("  " + currentSlide.getImagePath());
+            System.out.println("  " + currentSlide.getSlideType());
+            System.out.println("  " + currentSlide.getSlideValue());
+            
+        }
+    }
+   
     
     
     

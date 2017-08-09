@@ -19,6 +19,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -36,6 +39,10 @@ public class PrimaryWindowController implements Initializable {
     
     @FXML
     private Button up;
+    
+    @FXML
+    private TabPane tabPane;
+
     
     Game game;
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,11 +64,18 @@ public class PrimaryWindowController implements Initializable {
         stage.setOnCloseRequest((WindowEvent we) -> {
             System.exit(0);
         });
+        
+        // Open into edit pane...
+        SingleSelectionModel<Tab> selectionModel;
+        selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(1);
+        
         game = new Game();
         game.players.add(new Player("Player 1","Franklin"));
         secondaryWindow.loadGame(game);
         secondaryWindow.update();
         game.players.add(new Player("Cody","Franklin"));
+        game.slides.add(new Slide("/imagePath",1));
         secondaryWindow.update();
         
     }
