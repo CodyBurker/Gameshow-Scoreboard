@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+To test custom methods - Player Slide Game
  */
 package soYouThinkYouKnowMath;
 
@@ -15,8 +13,27 @@ public class tester {
         Game game = new Game();
         game.slides.add(new Slide("/testPath2",1));
         game.players.add(new Player("Cody","Franklin"));
-        System.out.println("Player Name: " + game.getPlayer(1).name);
-        System.out.println("Image Path: " + game.getSlide(1).getImagePath());
+        diag("Player name",game.getPlayer(1).name);
+        diag("Image Path",game.getSlide(1).getImagePath());
+        diag("Current Slide",game.currentSlide);
+        diag("Primary Color",game.primaryColor.toString());
+        diag("Number of players",game.getNumberOfPlayers());
+        diag("Number of slides",game.getNumberOfSlides());
+        diag("Adding Slide");
+        game.slides.add(new Slide("2",1));
+        diag("Number of slides",game.getNumberOfSlides());
+        diag("Adding player");
+        game.players.add(new Player("Cody","Franklin"));
+        diag("Number of players",game.getNumberOfPlayers());
+    }
+    static void diag(String before, String after){
+        System.out.println(before + ": " + after);
     }
     
+    static void diag(String before, int after){
+        System.out.println(before + Integer.toString(after));
+    }
+    static void diag(String single){
+        System.out.println(single);
+    }
 }
