@@ -54,8 +54,13 @@ public class SecondaryWindowController implements Initializable {
     public void loadGame(Game game){
         this.game = game;
     }
-    public void update(){
-        System.out.println(game.getNumberOfPlayers());
+    public void update(){ // Test of sharing game object between controllers
+        System.out.println("Players: " + game.getNumberOfPlayers());
+        p1Name.setText(game.getPlayer(1).name);
+        for (Player currentPlayer : game.getPlayerList()){
+            System.out.println("   " + currentPlayer.name);
+        }
+        
     }
     
     

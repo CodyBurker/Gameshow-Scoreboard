@@ -58,7 +58,7 @@ public class PrimaryWindowController implements Initializable {
             System.exit(0);
         });
         game = new Game();
-        game.players.add(new Player("Hello","Franklin"));
+        game.players.add(new Player("Player 1","Franklin"));
         secondaryWindow.loadGame(game);
         secondaryWindow.update();
         game.players.add(new Player("Cody","Franklin"));
