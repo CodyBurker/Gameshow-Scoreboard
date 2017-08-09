@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="so.you.think.you.know.math.SecondaryWindowController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="soYouThinkYouKnowMath.SecondaryWindowController">
    <children>
       <GridPane fx:id="MainGridPane" layoutX="181.0" layoutY="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -37,13 +37,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                  <Text fx:id="p1Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <Label text="Institution1" GridPane.rowIndex="1" />
-                  <Label text="10" GridPane.rowIndex="2">
+                  <Label fx:id="p1Int" text="Institution1" GridPane.rowIndex="1" />
+                  <Label fx:id="p1Score" text="10" GridPane.rowIndex="2">
                      <font>
                         <Font size="26.0" />
                      </font></Label>

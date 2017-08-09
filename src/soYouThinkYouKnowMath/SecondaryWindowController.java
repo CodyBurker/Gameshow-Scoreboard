@@ -9,8 +9,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -29,6 +32,17 @@ public class SecondaryWindowController implements Initializable {
     private GridPane scoresGridPane;
     
     
+    @FXML
+    private Text p1Name;
+
+    @FXML
+    private Label p1Int;
+
+    @FXML
+    private Label p1Score;
+    
+    private Game game;
+    
     /**
      * Initializes the controller class.
      */
@@ -36,11 +50,11 @@ public class SecondaryWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }
-
-    void addPlayerView(String playerName,String playerInstitution,String playerScore){
-        
-        scoresGridPane.addColumn(0);
+    
+    public void loadGame(Game game){
+        this.game = game;
     }
+
     
     
     

@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -31,9 +32,12 @@ import javafx.stage.WindowEvent;
 public class PrimaryWindowController implements Initializable {
     Stage stage;
     SecondaryWindowController secondaryWindow;
-    @Override
+    //@Override
     
+    @FXML
+    private Button up;
     
+    Game game;
     public void initialize(URL url, ResourceBundle rb) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -50,12 +54,13 @@ public class PrimaryWindowController implements Initializable {
             Logger.getLogger(PrimaryWindowController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.print("Failed to initlialize secondary window");
         }
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                System.exit(0);
-            }
+        stage.setOnCloseRequest((WindowEvent we) -> {
+            System.exit(0);
         });
+
         
-    }    
+        
+        
+    }
     
 }

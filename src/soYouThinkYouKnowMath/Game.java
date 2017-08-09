@@ -5,6 +5,7 @@
  */
 package soYouThinkYouKnowMath;
 
+import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.paint.Color;
 
@@ -22,7 +23,8 @@ public class Game {
         this.primaryColor = Color.GOLD;
         this.secondaryColor = Color.BLUE;
         this.currentSlide = 1;
-        slides.add(new Slide("",2));
+        slides = new ArrayList<>();
+        players = new ArrayList<>();
     }
     void addSlide(Slide newSlide){ // To add a new slide object
         slides.add(newSlide);
@@ -33,8 +35,9 @@ public class Game {
     Slide getSlide(int slideNumber){ // Get a certain slide from 1-index
         return slides.get(slideNumber - 1);
     }
-    void addPlayer(String name, String institution){ // Add a new player with a zero score
-        players.add(new Player(name,institution,0));
+    void newPlayer(String name, String institution){ // Add a new player with a zero score
+        Player newPlayer = new Player(name, institution,0);
+        boolean x = players.add(newPlayer);
     }
     Player getPlayer(int playerNumber){ // Get a player from 1-index
         return players.get(playerNumber - 1);
@@ -68,5 +71,8 @@ public class Game {
             this.currentSlide--;
         }
         return this.currentSlide;
+    }
+    List<Player> getPlayerList(){
+        return this.players;
     }
 }

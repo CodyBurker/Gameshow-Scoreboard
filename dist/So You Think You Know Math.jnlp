@@ -12,6 +12,6 @@
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="So You Think You Know Math" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="so.you.think.you.know.math.SoYouThinkYouKnowMath"  name="So You Think You Know Math" />
+  <jfx:javafx-desc  width="800" height="600" main-class="soYouThinkYouKnowMath.SoYouThinkYouKnowMath"  name="So You Think You Know Math" />
   <update check="always"/>
 </jnlp>
