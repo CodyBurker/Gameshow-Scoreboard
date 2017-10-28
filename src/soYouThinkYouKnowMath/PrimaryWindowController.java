@@ -5,7 +5,6 @@
  */
 package soYouThinkYouKnowMath;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,15 +12,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,7 +36,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -172,11 +169,27 @@ public class PrimaryWindowController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("So You Think You Know Math");
             stage.show();
+            
+            // New window height and width listeners...
+            scene.widthProperty().addListener(new ChangeListener<Number>(){
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    secondaryWindow.resizeSlide(newValue.doubleValue() ,secondaryWindow.getHeight());
+                }
+                
+            });
+            scene.heightProperty().addListener(new ChangeListener<Number>(){
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                                      secondaryWindow.resizeSlide(secondaryWindow.getWidth(),newValue.doubleValue() * .75);
+                }
+                
+            });
+            
         } catch (IOException ex) {
             Logger.getLogger(PrimaryWindowController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.print("Failed to initlialize secondary window");
         }
-
 //        stage.setOnCloseRequest((WindowEvent we) -> {
 //            Alert ruSure = new Alert(Alert.AlertType.CONFIRMATION);
 //            Optional<ButtonType> answer = ruSure.showAndWait();
