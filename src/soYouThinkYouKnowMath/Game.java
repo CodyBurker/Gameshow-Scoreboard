@@ -23,7 +23,8 @@ public class Game {
     List<Player> players; // List of player objects
     Color primaryColor; //Main color of game display
     Color secondaryColor; // Secondary color of game display
-    private int currentSlide; // Current slide displaying with a 1-index.
+    private int currentSlide; // Current slide displaying
+    ArrayList<SlideType> slideTypes = new ArrayList<>();
     Game(){ // New game defaults to gold,blue, first slide, with a single blank slide
         this.primaryColor = Color.GOLD;
         this.secondaryColor = Color.BLUE;
@@ -37,11 +38,22 @@ public class Game {
         players.add(new Player("Player 4","Institution 1",0));
         players.add(new Player("Player 5","Institution 1",0));
         players.add(new Player("Player 6","Institution 1",0));
-        slides.add(new Slide(new File(""),1,1));
+        
+        // Slide types intialization
+        slideTypes.add(new SlideType(true,1,"Regular"));
+        slideTypes.add(new SlideType(false,-1,"Title"));
+        slideTypes.add(new SlideType(true,1,"Tie-Breaker"));
+        slideTypes.add(new SlideType(true,1,"Flash Round"));
+        slideTypes.add(new SlideType(true,1,"Final Slide"));
+        
+        // Add dummy slide
+        slides.add(new Slide(new File(""),slideTypes.get(0),1));
+        
+        
     }
     void addSlide(File slidePath){ // To add a new slide object
         try{
-        Slide newSlide = new Slide(slidePath,1);
+        Slide newSlide = new Slide(slidePath,slideTypes.get(0),1);
         slides.add(++currentSlide, newSlide);
         }
         catch(Exception e){}

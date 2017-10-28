@@ -139,7 +139,7 @@ public class SecondaryWindowController implements Initializable {
     public void printSlides(Game game){
         System.out.println(game.getNumberOfSlides() + " Slides:");
         for (Slide currentSlide: game.slides){
-            System.out.println("  " + currentSlide.getSlideType());
+            System.out.println("  " + currentSlide.getSlideType().typeName);
             System.out.println("  " + currentSlide.getSlideValue());
             
         }

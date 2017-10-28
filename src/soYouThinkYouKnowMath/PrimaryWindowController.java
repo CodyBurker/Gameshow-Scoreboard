@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
@@ -138,7 +141,10 @@ public class PrimaryWindowController implements Initializable {
     private Button playNext;
     @FXML
     private Button playHide;
-    
+    @FXML
+    private ChoiceBox slideType;
+    @FXML
+    private TextField slideValue;
     Game game;
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -165,8 +171,12 @@ public class PrimaryWindowController implements Initializable {
         SingleSelectionModel<Tab> selectionModel;
         selectionModel = tabPane.getSelectionModel();
         selectionModel.select(1);
-
+        
         game = new Game();
+        
+        // Initialize SlideType choicebox'
+        //ObservableList slideTypes = new  ObservableList (game.slideTypes);
+        slideType.setItems(FXCollections.observableArrayList(game.slideTypes));
 
     }
 
@@ -325,7 +335,12 @@ public class PrimaryWindowController implements Initializable {
         fileChooser.setTitle("Add new slide");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JPEG", "*.jpg"));
         File newSlideFile = fileChooser.showOpenDialog(stage);
-        //FileInputStream x = new FileInputStream(newSlideFile.getAbsolutePath());
+        try{
+        FileInputStream x = new FileInputStream(newSlideFile.getAbsolutePath());
+        }
+        catch (Exception e){
+            
+        }
         game.addSlide(newSlideFile);
         update();
     }
@@ -342,11 +357,18 @@ public class PrimaryWindowController implements Initializable {
     }
     
     @FXML
-    private void deleteSlide(ActionEvent evet){
+    private void deleteSlide(ActionEvent event){
         game.deleteSlide();
         update();
     }
     
+    @FXML
+    private void setSlideType(ActionEvent event){
+    // Search for slide type based on string
+    int selectedIndex = slideType.getSelectionModel().getSelectedIndex();
+    game.getCurrentSlide().setSlideType(game.slideTypes.get(selectedIndex));
+//game.getCurrentSlide().setSlideType(type);
+    }
 
 
     private void update() {
@@ -364,6 +386,7 @@ public class PrimaryWindowController implements Initializable {
         game.players.get(3).institution = p4Inst.getText();
         game.players.get(4).institution = p5Inst.getText();
         game.players.get(5).institution = p6Inst.getText();
+        
         // Update Score Labels
         p1Score.setText(game.getPlayer(0).getScore() + "");
         p1Score.setText(game.getPlayer(1).getScore() + "");
@@ -377,7 +400,6 @@ public class PrimaryWindowController implements Initializable {
         editSlideIndicator.setText(indicatorText);
         playSlideIndicator.setText(indicatorText);
         
-        
         // Update point value butttons
         String upString = "+" + game.getCurrentPointValue();
         p1Up.setText(upString);
@@ -386,6 +408,9 @@ public class PrimaryWindowController implements Initializable {
         p4Up.setText(upString);
         p5Up.setText(upString);
         p6Up.setText(upString);
+        
+        // Update SlideType to match current slide
+        slideType.setValue(game.getCurrentSlide().getSlideType());
         
         // Update Image Pane
         try{
