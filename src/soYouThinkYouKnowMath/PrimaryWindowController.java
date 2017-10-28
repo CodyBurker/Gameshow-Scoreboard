@@ -14,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +27,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
@@ -173,8 +176,29 @@ public class PrimaryWindowController implements Initializable {
             Logger.getLogger(PrimaryWindowController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.print("Failed to initlialize secondary window");
         }
+
+//        stage.setOnCloseRequest((WindowEvent we) -> {
+//            Alert ruSure = new Alert(Alert.AlertType.CONFIRMATION);
+//            Optional<ButtonType> answer = ruSure.showAndWait();
+//            if (answer.get() == ButtonType.OK){
+//                System.out.println("Clicked okay");
+//            }
+//            System.exit(0);
+//        });
+// Confirm exit before closing
         stage.setOnCloseRequest((WindowEvent we) -> {
-            System.exit(0);
+            we.consume();
+            Alert ruSure = new Alert(Alert.AlertType.CONFIRMATION);
+            ruSure.setContentText("Are you sure you want to quit?");
+            Optional<ButtonType> answer = ruSure.showAndWait();
+            if (answer.isPresent() && answer.get() == ButtonType.OK) {
+                System.out.println("Clicked okay");
+                System.exit(0);
+
+            } else if (answer.isPresent() && answer.get() == ButtonType.CANCEL) {
+                System.out.println("Clicked cancel");
+            }
+
         });
 
         // Open into edit pane...
@@ -187,6 +211,7 @@ public class PrimaryWindowController implements Initializable {
         // Initialize SlideType choicebox'
         //ObservableList slideTypes = new  ObservableList (game.slideTypes);
         slideType.setItems(FXCollections.observableArrayList(game.slideTypes));
+        update();
 
     }
 
@@ -348,7 +373,7 @@ public class PrimaryWindowController implements Initializable {
     private void backgroundUpdate(ActionEvent event) {
         javafx.scene.paint.Color color = backgroundPicker.getValue();
         // Convert color picker value to a hex string so that it can be used in CSS later
-        
+
         String hexString = "#" + color.toString().substring(2, 8);
         game.secondaryColor = hexString;
         System.out.println(color);
@@ -414,7 +439,7 @@ public class PrimaryWindowController implements Initializable {
             FileChooser saveChooser = new FileChooser();
             saveChooser.setTitle("Save Game");
             saveChooser.getExtensionFilters().add(new ExtensionFilter(".gam", "*.gam"));
-            File save = saveChooser.showSaveDialog(stage);
+            File save = saveChooser.showSaveDialog(p1Score.getScene().getWindow());
             FileOutputStream fileOut = new FileOutputStream(save);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(game);
@@ -432,7 +457,7 @@ public class PrimaryWindowController implements Initializable {
             FileChooser saveChooser = new FileChooser();
             saveChooser.setTitle("Load Game");
             saveChooser.getExtensionFilters().add(new ExtensionFilter(".gam", "*.gam"));
-            File load = saveChooser.showOpenDialog(stage);
+            File load = saveChooser.showOpenDialog(p1Score.getScene().getWindow());
             FileInputStream fileIn = new FileInputStream(load);
             ObjectInputStream in = new ObjectInputStream(fileIn);
             game = (Game) in.readObject();

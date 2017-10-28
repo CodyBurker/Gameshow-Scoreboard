@@ -28,9 +28,9 @@ public class Game implements java.io.Serializable{
     String secondaryColor; // Secondary color of game display
     private int currentSlide; // Current slide displaying
     ArrayList<SlideType> slideTypes = new ArrayList<>();
-    Game(){ // New game defaults to gold,blue, first slide, with a single blank slide
-        this.primaryColor = "#ffff66";// gold
-        this.secondaryColor = "#0066ff";// blue
+    Game(){ // New game defaults to black/white, first slide, with a single blank slide
+        this.primaryColor = "#000000";// black
+        this.secondaryColor = "#ffffff";// white
         this.currentSlide = 0;
         slides = new ArrayList<>();
         slides = new ArrayList<>();
