@@ -222,12 +222,12 @@
                                                   </rowConstraints>
                                                    <children>
                                                       <Label text="Value:" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                                      <TextField prefHeight="27.0" prefWidth="96.0" GridPane.columnIndex="1">
+                                                      <TextField fx:id="slideValue" prefHeight="27.0" prefWidth="96.0" GridPane.columnIndex="1">
                                                          <GridPane.margin>
                                                             <Insets left="10.0" right="10.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <Button mnemonicParsing="false" text="OK" GridPane.columnIndex="2" />
+                                                      <Button mnemonicParsing="false" onAction="#setSlideValue" text="OK" GridPane.columnIndex="2" />
                                                    </children>
                                                 </GridPane>
                                              </children></HBox>

@@ -182,77 +182,77 @@ public class PrimaryWindowController implements Initializable {
 
     @FXML
     private void p1UpClick(ActionEvent event) {
-        game.getPlayer(1).score += game.getCurrentPointValue();
+        game.getPlayer(0).score += game.getCurrentPointValue();
         update();
     }
 
     @FXML
     private void p2UpClick(ActionEvent event) {
-        game.getPlayer(2).score += game.getCurrentPointValue();
+        game.getPlayer(1).score += game.getCurrentPointValue();
         update();
     }
 
     @FXML
     private void p3UpClick(ActionEvent event) {
-        game.getPlayer(3).score += game.getCurrentPointValue();
+        game.getPlayer(2).score += game.getCurrentPointValue();
         update();
     }
 
     @FXML
     private void p4UpClick(ActionEvent event) {
-        game.getPlayer(4).score += game.getCurrentPointValue();
+        game.getPlayer(3).score += game.getCurrentPointValue();
         update();
     }
 
     @FXML
     private void p5UpClick(ActionEvent event) {
-        game.getPlayer(5).score += game.getCurrentPointValue();
+        game.getPlayer(4).score += game.getCurrentPointValue();
         update();
     }
 
     @FXML
     private void p6UpClick(ActionEvent event) {
-        game.getPlayer(6).score += game.getCurrentPointValue();
+        game.getPlayer(5).score += game.getCurrentPointValue();
         update();
     }
 
     @FXML
     private void p1DownClick(ActionEvent event) {
-        game.getPlayer(1).score--;
+        game.getPlayer(0).score--;
         update();
     }
 
     @FXML
     private void p2DownClick(ActionEvent event) {
-        game.getPlayer(2).score--;
+        game.getPlayer(1).score--;
         update();
 
     }
 
     @FXML
     private void p3DownClick(ActionEvent event) {
-        game.getPlayer(3).score--;
+        game.getPlayer(2).score--;
         update();
 
     }
 
     @FXML
     private void p4DownClick(ActionEvent event) {
-        game.getPlayer(4).score--;
+        game.getPlayer(3).score--;
         update();
 
     }
 
     @FXML
     private void p5DownClick(ActionEvent event) {
-        game.getPlayer(5).score--;
+        game.getPlayer(4).score--;
         update();
 
     }
 
     @FXML
     private void p6DownClick(ActionEvent event) {
-        game.getPlayer(6).score--;
+        game.getPlayer(5).score--;
         update();
 
     }
@@ -364,12 +364,22 @@ public class PrimaryWindowController implements Initializable {
     
     @FXML
     private void setSlideType(ActionEvent event){
-    // Search for slide type based on string
     int selectedIndex = slideType.getSelectionModel().getSelectedIndex();
     game.getCurrentSlide().setSlideType(game.slideTypes.get(selectedIndex));
+    update();
 //game.getCurrentSlide().setSlideType(type);
     }
+    
+    @FXML
+    private void setSlideValue(ActionEvent event) {
+        try {
+            int tmpSlideValue = Integer.parseInt(slideValue.getText());
+            game.getCurrentSlide().setSlidePointValue(tmpSlideValue);
+        } catch (Exception e) {
 
+        }
+        update();
+    }
 
     private void update() {
         // Read player names
@@ -388,12 +398,12 @@ public class PrimaryWindowController implements Initializable {
         game.players.get(5).institution = p6Inst.getText();
         
         // Update Score Labels
-        p1Score.setText(game.getPlayer(0).getScore() + "");
-        p1Score.setText(game.getPlayer(1).getScore() + "");
-        p1Score.setText(game.getPlayer(2).getScore() + "");
-        p1Score.setText(game.getPlayer(3).getScore() + "");
-        p1Score.setText(game.getPlayer(4).getScore() + "");
-        p1Score.setText(game.getPlayer(5).getScore() + "");
+        p1Score.setText(game.players.get(0).score + "");
+        p2Score.setText(game.players.get(1).score + "");
+        p3Score.setText(game.players.get(2).score + "");
+        p4Score.setText(game.players.get(3).score + "");
+        p5Score.setText(game.players.get(4).score + "");
+        p6Score.setText(game.players.get(5).score + "");
         
         // Update Slide# indicator label
         String indicatorText = "Slide " + (game.getCurrentSlideNumber()+1) + " of " + game.getNumberOfSlides();
@@ -409,9 +419,20 @@ public class PrimaryWindowController implements Initializable {
         p5Up.setText(upString);
         p6Up.setText(upString);
         
+        
+        // Update slide value to match current slide
+        
+        
         // Update SlideType to match current slide
         slideType.setValue(game.getCurrentSlide().getSlideType());
-        
+        if (game.getCurrentSlide().getSlideType().hasPoints){
+            slideValue.setText(game.getCurrentSlide().getSlideValue() + "");
+            slideValue.setEditable(true);
+        }
+        else {
+            slideValue.setText("No points...");
+            slideValue.setEditable(false);
+        }
         // Update Image Pane
         try{
         previewPane.setImage(game.getCurrentSlide().getImage());
@@ -424,3 +445,4 @@ public class PrimaryWindowController implements Initializable {
  }
 
 }
+
