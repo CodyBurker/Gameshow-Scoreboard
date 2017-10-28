@@ -20,12 +20,11 @@
           <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="ImageView" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="mainPain" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
             <GridPane fx:id="scoresGridPane" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="16.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="16.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="16.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="16.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="16.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="16.0" prefWidth="100.0" />
@@ -42,73 +41,62 @@
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <Label fx:id="p1Int" text="Institution1" GridPane.rowIndex="1" />
+                  <Label fx:id="p1Inst" text="Institution1" GridPane.rowIndex="1" />
                   <Label fx:id="p1Score" text="10" GridPane.rowIndex="2">
                      <font>
                         <Font size="26.0" />
                      </font></Label>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="1">
+                  <Text fx:id="p2Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="1">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="2">
+                  <Text fx:id="p3Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="2">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="3">
+                  <Text fx:id="p4Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="3">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="4">
+                  <Text fx:id="p5Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="4">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="5">
+                  <Text fx:id="p6Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="5">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cody Douglas Burker" textAlignment="CENTER" wrappingWidth="107.0" GridPane.columnIndex="6">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Text>
-                  <Label text="Institution1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label text="Institution1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Institution1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label text="Institution1" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                  <Label text="Institution1" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                  <Label text="Institution1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <Label text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="p4Inst" text="Institution1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label fx:id="p2Inst" text="Institution1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="p3Inst" text="Institution1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label fx:id="p6Inst" text="Institution1" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <Label fx:id="p5Inst" text="Institution1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Label fx:id="p2Score" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Label text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Label fx:id="p3Score" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Label text="10" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <Label fx:id="p4Score" text="10" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Label text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <Label fx:id="p5Score" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Label text="10" GridPane.columnIndex="5" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-                  <Label text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                  <Label fx:id="p6Score" text="10" GridPane.columnIndex="5" GridPane.rowIndex="2">
                      <font>
                         <Font size="26.0" />
                      </font>

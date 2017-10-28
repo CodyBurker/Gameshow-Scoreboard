@@ -5,6 +5,8 @@
  */
 package soYouThinkYouKnowMath;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,7 +26,10 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -78,18 +83,6 @@ public class PrimaryWindowController implements Initializable {
     @FXML
     private TextField p6Name;
     @FXML
-    private TextField p1Institution;
-    @FXML
-    private TextField p2Institution;
-    @FXML
-    private TextField p3Institution;
-    @FXML
-    private TextField p4Institution;
-    @FXML
-    private TextField p5Institution;
-    @FXML
-    private TextField p6Institution;
-    @FXML
     private ToggleButton p1Show;
     @FXML
     private ToggleButton p2Show;
@@ -113,6 +106,32 @@ public class PrimaryWindowController implements Initializable {
     private Label p5Score;
     @FXML
     private Label p6Score;
+    @FXML
+    private TextField p1Inst;
+    @FXML
+    private TextField p2Inst;
+    @FXML
+    private TextField p3Inst;
+    @FXML
+    private TextField p4Inst;
+    @FXML
+    private TextField p5Inst;
+    @FXML
+    private TextField p6Inst;
+    @FXML
+    private Label editSlideIndicator;
+    @FXML
+    private ImageView previewPane;
+    @FXML
+    private Button editNext;
+    @FXML
+    private Button editPrev;
+    @FXML
+    private Button editInsert;
+    @FXML
+    private Button editDelete;
+    
+    
     Game game;
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -143,130 +162,224 @@ public class PrimaryWindowController implements Initializable {
         game = new Game();
 
     }
+
     @FXML
-    private void p1UpClick(ActionEvent event){
-        game.getPlayer(1).score+= game.getSlide(game.currentSlide).getSlideValue();
+    private void p1UpClick(ActionEvent event) {
+        game.getPlayer(1).score += game.getCurrentPointValue();
         update();
     }
+
     @FXML
-    private void p2UpClick(ActionEvent event){
-        game.getPlayer(2).score+= game.getSlide(game.currentSlide).getSlideValue();
+    private void p2UpClick(ActionEvent event) {
+        game.getPlayer(2).score += game.getCurrentPointValue();
         update();
     }
+
     @FXML
-    private void p3UpClick(ActionEvent event){
-        game.getPlayer(3).score+= game.getSlide(game.currentSlide).getSlideValue();
+    private void p3UpClick(ActionEvent event) {
+        game.getPlayer(3).score += game.getCurrentPointValue();
         update();
     }
+
     @FXML
-    private void p4UpClick(ActionEvent event){
-        game.getPlayer(4).score+= game.getSlide(game.currentSlide).getSlideValue();
+    private void p4UpClick(ActionEvent event) {
+        game.getPlayer(4).score += game.getCurrentPointValue();
         update();
     }
+
     @FXML
-    private void p5UpClick(ActionEvent event){
-        game.getPlayer(5).score+= game.getSlide(game.currentSlide).getSlideValue();
+    private void p5UpClick(ActionEvent event) {
+        game.getPlayer(5).score += game.getCurrentPointValue();
         update();
     }
+
     @FXML
-    private void p6UpClick(ActionEvent event){
-        game.getPlayer(6).score+= game.getSlide(game.currentSlide).getSlideValue();
+    private void p6UpClick(ActionEvent event) {
+        game.getPlayer(6).score += game.getCurrentPointValue();
         update();
     }
+
     @FXML
-    private void p1DownClick(ActionEvent event){
+    private void p1DownClick(ActionEvent event) {
         game.getPlayer(1).score--;
         update();
     }
+
     @FXML
-    private void p2DownClick(ActionEvent event){
+    private void p2DownClick(ActionEvent event) {
         game.getPlayer(2).score--;
         update();
-        
+
     }
+
     @FXML
-    private void p3DownClick(ActionEvent event){
+    private void p3DownClick(ActionEvent event) {
         game.getPlayer(3).score--;
         update();
-        
+
     }
+
     @FXML
-    private void p4DownClick(ActionEvent event){
+    private void p4DownClick(ActionEvent event) {
         game.getPlayer(4).score--;
         update();
-        
+
     }
+
     @FXML
-    private void p5DownClick(ActionEvent event){
+    private void p5DownClick(ActionEvent event) {
         game.getPlayer(5).score--;
         update();
-        
+
     }
+
     @FXML
-    private void p6DownClick(ActionEvent event){
+    private void p6DownClick(ActionEvent event) {
         game.getPlayer(6).score--;
         update();
-        
-    }
-    @FXML
-    private void p1HideClick(ActionEvent event){
-        
-    }
-    @FXML
-    private void p2HideClick(ActionEvent event){
-        
-    }
-    @FXML
-    private void p3HideClick(ActionEvent event){
-        
+
     }
 
     @FXML
-    private void p4HideClick(ActionEvent event){
-        
+    private void p1HideClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void p2HideClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void p3HideClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void p4HideClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void p5HideClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void p6HideClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void p1NameDirty(ActionEvent event) {
+
+        update();
+    }
+
+    @FXML
+    private void p2NameDirty(ActionEvent event) {
+
+        update();
+    }
+
+    @FXML
+    private void p3NameDirty(ActionEvent event) {
+
+        update();
+    }
+
+    @FXML
+    private void p4NameDirty(ActionEvent event) {
+
+        update();
+    }
+
+    @FXML
+    private void p5NameDirty(ActionEvent event) {
+
+        update();
+    }
+
+    @FXML
+    private void p6NameDirty(ActionEvent event) {
+
+        update();
+    }
+
+    @FXML
+    private void insUpdate(ActionEvent event) {
+        update();
+    }
+
+    @FXML
+    private void insertSlide(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Add new slide");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JPEG", "*.jpg"));
+        File newSlideFile = fileChooser.showOpenDialog(stage);
+        //FileInputStream x = new FileInputStream(newSlideFile.getAbsolutePath());
+        game.addSlide(newSlideFile);
+        update();
+    }
+
+    @FXML
+    private void editNextClick(ActionEvent event){
+        game.next();
+        update();
     }
     @FXML
-    private void p5HideClick(ActionEvent event){
-        
-    }
-    @FXML
-    private void p6HideClick(ActionEvent event){
-        
-    }
-    @FXML
-    private void p1NameDirty(ActionEvent event){
-        
-    }
-    @FXML
-    private void p2NameDirty(ActionEvent event){
-        
-    }
-    @FXML
-    private void p3NameDirty(ActionEvent event){
-        
-    }
-    @FXML
-    private void p4NameDirty(ActionEvent event){
-        
-    }
-    @FXML
-    private void p5NameDirty(ActionEvent event){
-        
-    }
-    @FXML
-    private void p6NameDirty(ActionEvent event){
-        
-    }
-    private void update(){
-        secondaryWindow.update(game);
-        p1Score.setText(Integer.toString(game.getPlayer(1).getScore()));
-        p2Score.setText(Integer.toString(game.getPlayer(2).getScore()));
-        p3Score.setText(Integer.toString(game.getPlayer(3).getScore()));
-        p4Score.setText(Integer.toString(game.getPlayer(4).getScore()));
-        p5Score.setText(Integer.toString(game.getPlayer(5).getScore()));
-        p6Score.setText(Integer.toString(game.getPlayer(6).getScore()));
+    private void editPrevClick(ActionEvent event){
+        game.prev();
+        update();
     }
     
+    
 
+
+    private void update() {
+        // Read player names
+        game.players.get(0).name = p1Name.getText();
+        game.players.get(1).name = p2Name.getText();
+        game.players.get(2).name = p3Name.getText();
+        game.players.get(3).name = p4Name.getText();
+        game.players.get(4).name = p5Name.getText();
+        game.players.get(5).name = p6Name.getText();
+        // Read player institutions
+        game.players.get(0).institution = p1Inst.getText();
+        game.players.get(1).institution = p2Inst.getText();
+        game.players.get(2).institution = p3Inst.getText();
+        game.players.get(3).institution = p4Inst.getText();
+        game.players.get(4).institution = p5Inst.getText();
+        game.players.get(5).institution = p6Inst.getText();
+        // Update Score Labels
+        p1Score.setText(game.getPlayer(0).getScore() + "");
+        p1Score.setText(game.getPlayer(1).getScore() + "");
+        p1Score.setText(game.getPlayer(2).getScore() + "");
+        p1Score.setText(game.getPlayer(3).getScore() + "");
+        p1Score.setText(game.getPlayer(4).getScore() + "");
+        p1Score.setText(game.getPlayer(5).getScore() + "");
+        
+        // Update Slide# indicator label
+        //editSlideIndicator.setText("Slide " + game.getCurrentSlideNumber() + " of " + game.getNumberOfSlides());
+        
+        // Update point value butttons
+        String upString = "+" + game.getCurrentPointValue();
+        p1Up.setText(upString);
+        p2Up.setText(upString);
+        p3Up.setText(upString);
+        p4Up.setText(upString);
+        p5Up.setText(upString);
+        p6Up.setText(upString);
+        
+        // Update Image Pane
+        try{
+        previewPane.setImage(game.getCurrentSlide().getImage());
+        }
+        catch(Exception e){}
+        
+        // Call secondary window update 
+        secondaryWindow.update(game);
+        
+ }
 
 }

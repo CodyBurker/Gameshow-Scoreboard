@@ -5,12 +5,16 @@
  */
 package soYouThinkYouKnowMath;
 
+import java.io.File;
+import java.io.FileInputStream;
+import javafx.scene.image.Image;
+
 /**
  *
  * @author cody
  */
 public class Slide {
-    private String imagePath; // Filepath to image assocaited with slide
+    private Image slideImage;
     private int slideType; // Type of slide: delineated above
     private int pointValue;
 //    private boolean isPointSlide; // 1. Regular slide with point values
@@ -21,15 +25,24 @@ public class Slide {
 
 
     // Constructor
-    Slide( String imagePath, int type){
-        this.imagePath = imagePath;
+    Slide( File slideFile, int type){
         this.slideType = type;
         this.pointValue = 0;
+        try{
+        this.slideImage = new Image(new FileInputStream(slideFile.getAbsolutePath()));
+        
+        }
+        catch(Exception e){}
+        
     }
-    Slide(String imagePath,int type, int pointValue){
-        this.imagePath = imagePath;
+    Slide(File imagePath,int type, int pointValue){
         this.slideType = type;
         this.pointValue = pointValue;
+        try{
+        this.slideImage = new Image(new FileInputStream(imagePath.getAbsolutePath()));
+        
+        }
+        catch(Exception e){}
     }
     int getSlideType(){
         return this.slideType;
@@ -37,17 +50,17 @@ public class Slide {
     int getSlideValue(){
         return this.pointValue;
     }
-    String getImagePath(){
-        return this.imagePath;
+    Image getImage(){
+        return this.slideImage;
+    }
+    void setImage(Image newImage){
+        this.slideImage = newImage;
     }
     void setSlideType(int slideType){
         this.slideType = slideType;
     }
     void setSlidePointValue(int pointValue){
         this.pointValue = pointValue;
-    }
-    void setImagePath(String slidePath){
-        this.imagePath = slidePath;
     }
     
 }
