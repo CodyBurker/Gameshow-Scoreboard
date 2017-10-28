@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers load Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template load the editor.
  */
 package soYouThinkYouKnowMath;
 
@@ -9,8 +9,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +37,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -173,9 +176,9 @@ public class PrimaryWindowController implements Initializable {
         SingleSelectionModel<Tab> selectionModel;
         selectionModel = tabPane.getSelectionModel();
         selectionModel.select(1);
-        
+
         game = new Game();
-        
+
         // Initialize SlideType choicebox'
         //ObservableList slideTypes = new  ObservableList (game.slideTypes);
         slideType.setItems(FXCollections.observableArrayList(game.slideTypes));
@@ -330,48 +333,47 @@ public class PrimaryWindowController implements Initializable {
         update();
     }
 
-
     @FXML
     private void insertSlide(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Add new slide");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JPEG", "*.jpg"));
         File newSlideFile = fileChooser.showOpenDialog(stage);
-        try{
-        FileInputStream x = new FileInputStream(newSlideFile.getAbsolutePath());
-        }
-        catch (Exception e){
-            
+        try {
+            FileInputStream x = new FileInputStream(newSlideFile.getAbsolutePath());
+        } catch (Exception e) {
+
         }
         game.addSlide(newSlideFile);
         update();
     }
 
     @FXML
-    private void editNextClick(ActionEvent event){
+    private void editNextClick(ActionEvent event) {
         game.next();
         update();
     }
+
     @FXML
-    private void editPrevClick(ActionEvent event){
+    private void editPrevClick(ActionEvent event) {
         game.prev();
         update();
     }
-    
+
     @FXML
-    private void deleteSlide(ActionEvent event){
+    private void deleteSlide(ActionEvent event) {
         game.deleteSlide();
         update();
     }
-    
+
     @FXML
-    private void setSlideType(ActionEvent event){
-    int selectedIndex = slideType.getSelectionModel().getSelectedIndex();
-    game.getCurrentSlide().setSlideType(game.slideTypes.get(selectedIndex));
-    update();
+    private void setSlideType(ActionEvent event) {
+        int selectedIndex = slideType.getSelectionModel().getSelectedIndex();
+        game.getCurrentSlide().setSlideType(game.slideTypes.get(selectedIndex));
+        update();
 //game.getCurrentSlide().setSlideType(type);
     }
-    
+
     @FXML
     private void setSlideValue(ActionEvent event) {
         try {
@@ -382,23 +384,45 @@ public class PrimaryWindowController implements Initializable {
         }
         update();
     }
+
     @FXML
-    private void save(ActionEvent event){
-        try{
-            FileOutputStream fileOut = new FileOutputStream("/Users/cody/Desktop/SYTYKM/SYTYKM MMajor/lst.game");
+    private void save(ActionEvent event) {
+        try {
+            FileChooser saveChooser = new FileChooser();
+            saveChooser.setTitle("Save Game");
+            saveChooser.getExtensionFilters().add(new ExtensionFilter(".gam", "*.gam"));
+            File save = saveChooser.showSaveDialog(stage);
+            FileOutputStream fileOut = new FileOutputStream(save);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(game);
             out.close();
             fileOut.close();
             System.out.println("I tried, okay?");
-        }
-        catch(Exception x){
-            System.out.println("Well...nope. " +x.toString() );
+        } catch (Exception x) {
+            System.out.println("Well...nope. " + x.toString());
         }
     }
+
     @FXML
-    private void load(ActionEvent event){
-        
+    private void load(ActionEvent event) {
+        try {
+            FileChooser saveChooser = new FileChooser();
+            saveChooser.setTitle("Load Game");
+            saveChooser.getExtensionFilters().add(new ExtensionFilter(".gam", "*.gam"));
+            File load = saveChooser.showOpenDialog(stage);
+            FileInputStream fileIn = new FileInputStream(load);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            game = (Game) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (Exception e) {
+            System.out.println("Nope. " + e.toString());
+            for(StackTraceElement x:e.getStackTrace()){
+                System.out.println(x);
+            }
+        }
+        game.goToTop();
+        update();
     }
 
     private void update() {
@@ -416,7 +440,7 @@ public class PrimaryWindowController implements Initializable {
         game.players.get(3).institution = p4Inst.getText();
         game.players.get(4).institution = p5Inst.getText();
         game.players.get(5).institution = p6Inst.getText();
-        
+
         // Update Score Labels
         p1Score.setText(game.players.get(0).score + "");
         p2Score.setText(game.players.get(1).score + "");
@@ -424,12 +448,12 @@ public class PrimaryWindowController implements Initializable {
         p4Score.setText(game.players.get(3).score + "");
         p5Score.setText(game.players.get(4).score + "");
         p6Score.setText(game.players.get(5).score + "");
-        
+
         // Update Slide# indicator label
-        String indicatorText = "Slide " + (game.getCurrentSlideNumber()+1) + " of " + game.getNumberOfSlides();
+        String indicatorText = "Slide " + (game.getCurrentSlideNumber() + 1) + " of " + game.getNumberOfSlides();
         editSlideIndicator.setText(indicatorText);
         playSlideIndicator.setText(indicatorText);
-        
+
         // Update point value butttons
         String upString = "+" + game.getCurrentPointValue();
         p1Up.setText(upString);
@@ -440,29 +464,28 @@ public class PrimaryWindowController implements Initializable {
         p6Up.setText(upString);
         
         
+        
         // Update slide value to match current slide
         
         
         // Update SlideType to match current slide
-        slideType.setValue(game.getCurrentSlide().getSlideType());
-        if (game.getCurrentSlide().getSlideType().hasPoints){
+        slideType.setValue(game.getCurrentSlide().getSlideType().typeName);
+        if (game.getCurrentSlide().getSlideType().hasPoints) {
             slideValue.setText(game.getCurrentSlide().getSlideValue() + "");
             slideValue.setEditable(true);
-        }
-        else {
+        } else {
             slideValue.setText("No points...");
             slideValue.setEditable(false);
         }
         // Update Image Pane
-        try{
-        previewPane.setImage(game.getCurrentSlide().getImage());
+        try {
+            previewPane.setImage(game.getCurrentSlide().getImage());
+        } catch (Exception e) {
         }
-        catch(Exception e){}
-        
+
         // Call secondary window update 
         secondaryWindow.update(game);
-        
- }
+
+    }
 
 }
-

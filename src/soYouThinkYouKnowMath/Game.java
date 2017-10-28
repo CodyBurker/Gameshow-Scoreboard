@@ -125,6 +125,9 @@ public class Game implements java.io.Serializable{
         }
         return this.currentSlide;
     }
+    public void goToTop(){
+        this.currentSlide = 0;
+    }
     List<Player> getPlayerList(){
         return this.players;
     }

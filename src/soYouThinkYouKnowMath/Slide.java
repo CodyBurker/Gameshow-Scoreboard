@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package soYouThinkYouKnowMath;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -18,6 +18,7 @@ public class Slide implements java.io.Serializable{
     transient private Image slideImage;
     private int pointValue;
     private SlideType slideType;
+    private File imagePath;
 //    private boolean isPointSlide; // 1. Regular slide with point values
 //    private boolean isTitleSlide; // 2. Slide without points associated, just a title
 //    private boolean isTieBreakerSlide; // 3. Slide that is a tie-breaker. Has a point value...
@@ -39,22 +40,28 @@ public class Slide implements java.io.Serializable{
 //        slideTypes.add(new SlideType(true,1,"Flash Round"));
 //        slideTypes.add(new SlideType(true,1,"Final Slide"));
 //    }
-    Slide(File imagePath,SlideType type, int pointValue){
+    Slide(File imagePath, SlideType type, int pointValue) {
         this.slideType = type;
         this.pointValue = pointValue;
-        try{
-        this.slideImage = new Image(new FileInputStream(imagePath.getAbsolutePath()));
-        
+        try {
+            this.imagePath = imagePath;
+            this.slideImage = new Image(new FileInputStream(imagePath.getAbsolutePath()));
+        } catch (Exception e) {
         }
-        catch(Exception e){}
     }
-    
-    
-    SlideType getSlideType(){
+
+    SlideType getSlideType() {
         return this.slideType;
     }
     int getSlideValue(){
         return this.pointValue;
+    }
+    File getImagePath(){
+        return this.imagePath;
+    }
+    void setImagePath(File imagePath) throws FileNotFoundException {
+        this.imagePath = imagePath;
+        this.slideImage = loadImage(this.imagePath);
     }
     Image getImage(){
         return this.slideImage;
@@ -69,4 +76,20 @@ public class Slide implements java.io.Serializable{
         this.pointValue = pointValue;
     }
     
+    private void readObject(ObjectInputStream inputStream) throws ClassNotFoundException, IOException {
+        inputStream.defaultReadObject();
+        this.slideImage = SwingFXUtils.toFXImage(ImageIO.read(inputStream), null);
+       
+
+    }
+
+    private void writeObject(ObjectOutputStream o) throws IOException {
+        o.defaultWriteObject();
+        ImageIO.write(SwingFXUtils.fromFXImage(this.slideImage, null), "JPG", o);
+        
+ }
+    private Image loadImage(File imagePath) throws FileNotFoundException{
+        return new Image(new FileInputStream(imagePath.getAbsolutePath()));
+    }
+
 }
