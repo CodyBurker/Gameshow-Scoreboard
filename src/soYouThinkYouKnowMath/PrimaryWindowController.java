@@ -7,7 +7,9 @@ package soYouThinkYouKnowMath;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -379,6 +381,24 @@ public class PrimaryWindowController implements Initializable {
 
         }
         update();
+    }
+    @FXML
+    private void save(ActionEvent event){
+        try{
+            FileOutputStream fileOut = new FileOutputStream("/Users/cody/Desktop/SYTYKM/SYTYKM MMajor/lst.game");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(game);
+            out.close();
+            fileOut.close();
+            System.out.println("I tried, okay?");
+        }
+        catch(Exception x){
+            System.out.println("Well...nope. " +x.toString() );
+        }
+    }
+    @FXML
+    private void load(ActionEvent event){
+        
     }
 
     private void update() {

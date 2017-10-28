@@ -9,7 +9,7 @@ package soYouThinkYouKnowMath;
  *
  * @author cody
  */
-public class SlideType {
+public class SlideType implements java.io.Serializable{
     boolean hasPoints;
     int pointValue;
     String typeName;

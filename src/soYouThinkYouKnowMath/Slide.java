@@ -14,8 +14,8 @@ import javafx.scene.image.Image;
  *
  * @author cody
  */
-public class Slide {
-    private Image slideImage;
+public class Slide implements java.io.Serializable{
+    transient private Image slideImage;
     private int pointValue;
     private SlideType slideType;
 //    private boolean isPointSlide; // 1. Regular slide with point values

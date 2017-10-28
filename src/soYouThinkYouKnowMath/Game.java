@@ -18,11 +18,11 @@ import javafx.scene.paint.Color;
  *
  * @author cody
  */
-public class Game {
+public class Game implements java.io.Serializable{
     List<Slide> slides; // List of slide objects
     List<Player> players; // List of player objects
-    Color primaryColor; //Main color of game display
-    Color secondaryColor; // Secondary color of game display
+    transient Color primaryColor; //Main color of game display
+    transient Color secondaryColor; // Secondary color of game display
     private int currentSlide; // Current slide displaying
     ArrayList<SlideType> slideTypes = new ArrayList<>();
     Game(){ // New game defaults to gold,blue, first slide, with a single blank slide

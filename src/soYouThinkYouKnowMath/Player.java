@@ -9,7 +9,7 @@ package soYouThinkYouKnowMath;
  *
  * @author cody
  */
-public class Player {
+public class Player implements java.io.Serializable{
     String name;
     String institution;
     int score;
