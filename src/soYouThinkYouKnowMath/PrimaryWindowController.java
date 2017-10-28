@@ -130,7 +130,14 @@ public class PrimaryWindowController implements Initializable {
     private Button editInsert;
     @FXML
     private Button editDelete;
-    
+    @FXML
+    private Label playSlideIndicator;
+    @FXML
+    private Button playPrev;
+    @FXML
+    private Button playNext;
+    @FXML
+    private Button playHide;
     
     Game game;
 
@@ -311,6 +318,7 @@ public class PrimaryWindowController implements Initializable {
         update();
     }
 
+
     @FXML
     private void insertSlide(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -333,6 +341,11 @@ public class PrimaryWindowController implements Initializable {
         update();
     }
     
+    @FXML
+    private void deleteSlide(ActionEvent evet){
+        game.deleteSlide();
+        update();
+    }
     
 
 
@@ -360,7 +373,10 @@ public class PrimaryWindowController implements Initializable {
         p1Score.setText(game.getPlayer(5).getScore() + "");
         
         // Update Slide# indicator label
-        //editSlideIndicator.setText("Slide " + game.getCurrentSlideNumber() + " of " + game.getNumberOfSlides());
+        String indicatorText = "Slide " + (game.getCurrentSlideNumber()+1) + " of " + game.getNumberOfSlides();
+        editSlideIndicator.setText(indicatorText);
+        playSlideIndicator.setText(indicatorText);
+        
         
         // Update point value butttons
         String upString = "+" + game.getCurrentPointValue();

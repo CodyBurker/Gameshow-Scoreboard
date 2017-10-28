@@ -65,8 +65,13 @@ public class Game {
     public int getCurrentPointValue(){
         return this.getCurrentSlide().getSlideValue();
     }
-    void deleteSlide(int slideNumber){ // delete a certain slide from 1-index
-        slides.remove(slideNumber);
+    void deleteSlide(){
+        if(this.getNumberOfSlides() > 1){
+            slides.remove(currentSlide); //Remove the currentslide
+            this.prev(); // Go back a slide
+        }
+        
+        
     }
     Slide getSlide(int slideNumber){ // Get a certain slide from 1-index
         return slides.get(slideNumber);
