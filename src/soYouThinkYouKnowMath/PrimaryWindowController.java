@@ -5,6 +5,7 @@
  */
 package soYouThinkYouKnowMath;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
@@ -35,7 +37,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -151,6 +152,10 @@ public class PrimaryWindowController implements Initializable {
     @FXML
     private TextField slideValue;
     Game game;
+    @FXML
+    private ColorPicker foregroundPicker;
+    @FXML
+    private ColorPicker backgroundPicker;
 
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -334,6 +339,24 @@ public class PrimaryWindowController implements Initializable {
     }
 
     @FXML
+    private void foreGroundUpdate(ActionEvent event) {
+        game.primaryColor = foregroundPicker.getValue().toString();
+        update();
+    }
+
+    @FXML
+    private void backgroundUpdate(ActionEvent event) {
+        javafx.scene.paint.Color color = backgroundPicker.getValue();
+        // Convert color picker value to a hex string so that it can be used in CSS later
+        
+        String hexString = "#" + color.toString().substring(2, 8);
+        game.secondaryColor = hexString;
+        System.out.println(color);
+        System.out.println(hexString);
+        update();
+    }
+
+    @FXML
     private void insertSlide(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Add new slide");
@@ -417,7 +440,7 @@ public class PrimaryWindowController implements Initializable {
             fileIn.close();
         } catch (Exception e) {
             System.out.println("Nope. " + e.toString());
-            for(StackTraceElement x:e.getStackTrace()){
+            for (StackTraceElement x : e.getStackTrace()) {
                 System.out.println(x);
             }
         }
@@ -449,6 +472,10 @@ public class PrimaryWindowController implements Initializable {
         p5Score.setText(game.players.get(4).score + "");
         p6Score.setText(game.players.get(5).score + "");
 
+        // Update color picker controls to match game color settings
+        backgroundPicker.setValue(javafx.scene.paint.Color.web(game.secondaryColor));
+        foregroundPicker.setValue(javafx.scene.paint.Color.web(game.primaryColor));
+
         // Update Slide# indicator label
         String indicatorText = "Slide " + (game.getCurrentSlideNumber() + 1) + " of " + game.getNumberOfSlides();
         editSlideIndicator.setText(indicatorText);
@@ -462,14 +489,11 @@ public class PrimaryWindowController implements Initializable {
         p4Up.setText(upString);
         p5Up.setText(upString);
         p6Up.setText(upString);
-        
-        
-        
+
         // Update slide value to match current slide
-        
-        
-        // Update SlideType to match current slide
-        slideType.setValue(game.getCurrentSlide().getSlideType().typeName);
+        // Update SlideType choicebox to match current slide
+        //slideType.setValue(game.getCurrentSlide().getSlideType().typeName);
+        slideType.valueProperty().set(game.getCurrentSlide().getSlideType());
         if (game.getCurrentSlide().getSlideType().hasPoints) {
             slideValue.setText(game.getCurrentSlide().getSlideValue() + "");
             slideValue.setEditable(true);

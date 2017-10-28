@@ -7,6 +7,9 @@ package soYouThinkYouKnowMath;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -21,13 +24,13 @@ import javafx.scene.paint.Color;
 public class Game implements java.io.Serializable{
     List<Slide> slides; // List of slide objects
     List<Player> players; // List of player objects
-    transient Color primaryColor; //Main color of game display
-    transient Color secondaryColor; // Secondary color of game display
+    String primaryColor; //Main color of game display
+    String secondaryColor; // Secondary color of game display
     private int currentSlide; // Current slide displaying
     ArrayList<SlideType> slideTypes = new ArrayList<>();
     Game(){ // New game defaults to gold,blue, first slide, with a single blank slide
-        this.primaryColor = Color.GOLD;
-        this.secondaryColor = Color.BLUE;
+        this.primaryColor = "#ffff66";// gold
+        this.secondaryColor = "#0066ff";// blue
         this.currentSlide = 0;
         slides = new ArrayList<>();
         slides = new ArrayList<>();
@@ -101,16 +104,16 @@ public class Game implements java.io.Serializable{
     int getNumberOfSlides(){ // Return how many slides the game currently has
         return slides.size();
     }
-    Color getPrimaryColor(){ // Get the primary color
+    String getPrimaryColor(){ // Get the primary color
         return this.primaryColor;
     }
-    void setPrimaryColor(Color primaryColor){ // Set the primary color
+    void setPrimaryColor(String primaryColor){ // Set the primary color
         this.primaryColor = primaryColor;
     }
-    Color getSecondaryColor(){ // Get the secondary color
+    String getSecondaryColor(){ // Get the secondary color
         return this.secondaryColor;
     }
-    void setSecondaryColor(Color secondaryColor){ // Set the secondary color
+    void setSecondaryColor(String secondaryColor){ // Set the secondary color
         this.secondaryColor = secondaryColor;
     }
     int advanceSlide(){ // Method to advance slide in game object. Logic needs built out here some more.
@@ -131,4 +134,7 @@ public class Game implements java.io.Serializable{
     List<Player> getPlayerList(){
         return this.players;
     }
+    
+    
+    
 }

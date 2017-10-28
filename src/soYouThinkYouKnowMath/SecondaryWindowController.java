@@ -6,6 +6,7 @@
 package soYouThinkYouKnowMath;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.DoubleProperty;
@@ -15,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -27,7 +30,7 @@ import javafx.scene.text.Text;
 public class SecondaryWindowController implements Initializable {
     //FXML hooks
     @FXML
-    private GridPane MainGridPane;
+    private GridPane mainGridPane;
 
     @FXML
     private ImageView mainPain;
@@ -37,6 +40,9 @@ public class SecondaryWindowController implements Initializable {
     
     @FXML
     private ListView slidesListView;
+    
+    @FXML
+    private AnchorPane mainAnchorPane;
     
     @FXML
     private Text p1Name;
@@ -92,12 +98,33 @@ public class SecondaryWindowController implements Initializable {
     @FXML
     private Label p6Inst;
     
+    ArrayList<Label> labelArray;
+    ArrayList<Text> textArray;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        mainPain.fitHeightProperty().add(MainGridPane.heightProperty());
+        labelArray = new ArrayList<>();
+        textArray = new ArrayList<>();
+        labelArray.add(p1Score);
+        labelArray.add(p2Score);
+        labelArray.add(p3Score);
+        labelArray.add(p4Score);
+        labelArray.add(p5Score);
+        labelArray.add(p6Score);
+        labelArray.add(p1Inst);
+        labelArray.add(p2Inst);
+        labelArray.add(p3Inst);
+        labelArray.add(p4Inst);
+        labelArray.add(p5Inst);
+        labelArray.add(p6Inst);
+        textArray.add(p1Name);
+        textArray.add(p2Name);
+        textArray.add(p3Name);
+        textArray.add(p4Name);
+        textArray.add(p5Name);
+        textArray.add(p6Name);
         
         
     }
@@ -107,6 +134,7 @@ public class SecondaryWindowController implements Initializable {
         printPlayers(game);
         printSlides(game);
         System.out.println("-----------");
+        
         p1Name.setText(game.players.get(0).name);
         p2Name.setText(game.players.get(1).name);
         p3Name.setText(game.players.get(2).name);
@@ -125,6 +153,13 @@ public class SecondaryWindowController implements Initializable {
         p4Inst.setText(game.players.get(3).institution);
         p5Inst.setText(game.players.get(4).institution);
         p6Inst.setText(game.players.get(5).institution);
+         // Change background color
+        mainGridPane.setStyle("-fx-background-color: " + game.getSecondaryColor() );
+        // Change foreground color
+        labelArray.stream().forEach((lbl) -> {lbl.setTextFill(Paint.valueOf(game.primaryColor));});
+        textArray.stream().forEach((lbl) -> {lbl.setFill(Paint.valueOf(game.primaryColor));});
+        
+        
         
         mainPain.setImage(game.getCurrentSlide().getImage());
     
