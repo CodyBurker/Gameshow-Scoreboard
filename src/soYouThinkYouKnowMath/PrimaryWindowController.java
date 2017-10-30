@@ -156,6 +156,10 @@ public class PrimaryWindowController implements Initializable {
     private ColorPicker foregroundPicker;
     @FXML
     private ColorPicker backgroundPicker;
+    @FXML
+    private Label runGameSlideTypeLabel;
+    @FXML
+    private Label runGameSlideValueLabel;
 
     public void initialize(URL url, ResourceBundle rb) {
         try {
