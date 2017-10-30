@@ -522,6 +522,17 @@ public class PrimaryWindowController implements Initializable {
         String indicatorText = "Slide " + (game.getCurrentSlideNumber() + 1) + " of " + game.getNumberOfSlides();
         editSlideIndicator.setText(indicatorText);
         playSlideIndicator.setText(indicatorText);
+        // update Slide type and value labels on run game tab
+        
+        if (game.getCurrentSlide().hasPoints()){
+            runGameSlideValueLabel.setText("Slide Value: " + game.getCurrentPointValue());
+        }
+        else {
+            runGameSlideValueLabel.setText("Slide Value: NA");
+        }
+        
+        runGameSlideTypeLabel.setText(game.getCurrentSlide().getSlideType().typeName);
+        
 
         // Update point value butttons
         String upString = "+" + game.getCurrentPointValue();
@@ -531,7 +542,7 @@ public class PrimaryWindowController implements Initializable {
         p4Up.setText(upString);
         p5Up.setText(upString);
         p6Up.setText(upString);
-
+        
         // Update slide value to match current slide
         // Update SlideType choicebox to match current slide
         //slideType.setValue(game.getCurrentSlide().getSlideType().typeName);
@@ -540,7 +551,7 @@ public class PrimaryWindowController implements Initializable {
             slideValue.setText(game.getCurrentSlide().getSlideValue() + "");
             slideValue.setEditable(true);
         } else {
-            slideValue.setText("No points...");
+            slideValue.setText("NA");
             slideValue.setEditable(false);
         }
         // Update Image Pane

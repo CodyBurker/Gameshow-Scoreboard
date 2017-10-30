@@ -76,6 +76,10 @@ public class Slide implements java.io.Serializable{
         this.pointValue = pointValue;
     }
     
+    boolean hasPoints(){
+        return this.slideType.hasPoints;
+    }
+    
     private void readObject(ObjectInputStream inputStream) throws ClassNotFoundException, IOException {
         inputStream.defaultReadObject();
         this.slideImage = SwingFXUtils.toFXImage(ImageIO.read(inputStream), null);

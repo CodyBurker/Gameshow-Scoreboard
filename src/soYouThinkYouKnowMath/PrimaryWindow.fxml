@@ -180,8 +180,8 @@
                                                       <Button fx:id="playNext" mnemonicParsing="false" onAction="#editNextClick" text="Next Slide" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                                       <Button mnemonicParsing="false" onAction="#editPrevClick" text="Previous Slide" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                                       <Button fx:id="playHide" mnemonicParsing="false" text="Hide Slide" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                      <Label text="Slide Type:" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                                                      <Label text="Slide value:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                      <Label fx:id="runGameSlideTypeLabel" text="Slide Type:" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                                      <Label fx:id="runGameSlideValueLabel" text="Slide value:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
                                              </children>

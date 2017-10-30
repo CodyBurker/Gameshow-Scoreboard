@@ -176,10 +176,12 @@
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
-                                                      <Label fx:id="playSlideIndicator" text="Slide # of #" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" />
-                                                      <Button fx:id="playNext" mnemonicParsing="false" onAction="#editNextClick" text="Next Slide" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                      <Button mnemonicParsing="false" onAction="#editPrevClick" text="Previous Slide" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                      <Button fx:id="playHide" mnemonicParsing="false" text="Hide Slide" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                      <Label fx:id="playSlideIndicator" text="Slide # of #" GridPane.halignment="CENTER" />
+                                                      <Button fx:id="playNext" mnemonicParsing="false" onAction="#editNextClick" text="Next Slide" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                      <Button mnemonicParsing="false" onAction="#editPrevClick" text="Previous Slide" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                      <Button fx:id="playHide" mnemonicParsing="false" text="Hide Slide" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                      <Label fx:id="runGameSlideTypeLabel" text="Slide Type:" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                                      <Label fx:id="runGameSlideValueLabel" text="Slide value:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
                                              </children>
@@ -320,8 +322,6 @@
                                     <Label text="Background color:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                     <Label text="Foreground Color (Text):" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                     <ColorPicker fx:id="foregroundPicker" onAction="#foreGroundUpdate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <Button mnemonicParsing="false" onAction="#save" text="Save current setup" GridPane.rowIndex="2" />
-                                    <Button mnemonicParsing="false" onAction="#load" text="Load setup" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
                            </children>
@@ -334,8 +334,8 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                        <MenuItem mnemonicParsing="false" onAction="#load" text="Open" />
-                    <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#load" text="Open .gam File" />
+                    <MenuItem mnemonicParsing="false" onAction="#save" text="Save As" />
                   </items>
                 </Menu>
               </menus>
